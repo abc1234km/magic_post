@@ -1,0 +1,56 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.2.0'
+	}
+}
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+apply plugin: 'com.google.cloud.tools.appengine'
+appengine {  // App Engine tasks configuration
+	deploy {   // deploy configuration
+		projectId = 'GCLOUD_CONFIG' // gcloud config set project
+		version = 'gcloud-config-11'   // gcloud to generate a version
+	}
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = "11"
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.json:json:20090211'
+	implementation 'io.jsonwebtoken:jjwt:0.2'
+	implementation 'org.springdoc:springdoc-openapi-core:1.1.49'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+	implementation 'com.google.zxing:core:3.3.1'
+	implementation 'com.google.zxing:javase:3.5.2'
+	implementation 'com.cloudinary:cloudinary-http44:1.2.0'
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.flywaydb:flyway-gradle-plugin:10.0.0'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+targetCompatibility = JavaVersion.VERSION_11

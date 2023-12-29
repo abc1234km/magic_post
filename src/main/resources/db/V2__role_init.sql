@@ -1,0 +1,3 @@
+-- INSERT INTO roles(id, name)
+-- VALUES (1, 'Lãnh đạo công ty'), (2, 'Trưởng điểm giao dịch'), (3, 'Nhân viên giao dịch'),
+--        (4, 'Trưởng điểm tập kết'), (5, 'Nhân viên tập kết'), (6, 'Khách hàng');
